@@ -1,0 +1,63 @@
+$font-family: 'Josefin Sans', sans-serif;
+
+// Change search bar styling
+::ng-deep {
+
+  // Change search bar font
+  .mat-form-field { font-family: $font-family; }
+
+  // Beautifying input
+  .mat-form-field-flex > .mat-form-field-infix { padding: 0.4em !important; border-top: 0.5em solid transparent;}
+  .mat-form-field-appearance-outline .mat-form-field-label { margin-top:-15px; }
+  .mat-form-field-wrapper { padding-bottom: 0.5em; }
+  .mat-form-field-appearance-outline .mat-form-field-outline { color: black;}
+
+  // Round borders and change color background
+  .mat-form-field-outline-start {
+    border-radius: 28px 0 0 28px !important;
+    min-width: 28px !important;
+    background-color: white;
+  }
+  .mat-form-field-outline-end {
+    border-radius: 0 28px 28px 0 !important;
+    background-color: white;
+  }
+}
+
+// Entire toolbar
+mat-toolbar {
+  box-shadow: 0px 0px 2px 1px purple inset;
+  border-radius: 2px;
+}
+
+// Each toolbar row
+mat-toolbar-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+// Change logo size
+.mat-icon {
+  font-size: 120%;
+}
+
+// Fit logo in the toolbar
+img.logo-md {
+  object-fit: contain;
+  max-width: 70%;
+  max-height: 70%;
+}
+
+// Style title label
+span.logo-md-label {
+  font-family: $font-family;
+  font-weight: 700;
+}
+
+// Change placeholder color
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgba(128, 128, 128, 0.5);
+  opacity: 1; /* Firefox */
+}
