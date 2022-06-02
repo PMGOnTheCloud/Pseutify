@@ -14,14 +14,14 @@ import { MatButtonModule } from '@angular/material/button';
 // Angular Components
 import { AppComponent } from './app.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
-import { SongsListComponent } from './components/songs-list/songs-list.component';
+import { InfoListComponent } from './components/info-list/info-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TopbarComponent,
-    SongsListComponent
+    InfoListComponent
   ],
   imports: [
     BrowserModule,

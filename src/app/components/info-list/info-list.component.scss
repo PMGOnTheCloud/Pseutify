@@ -12,7 +12,7 @@ div.cardList {
 
 @media screen and (max-width: 576px) {
   // Change grid template columns
-  div.cardList { grid-template-columns: repeat(1, 1fr); }
+  div.cardList { grid-template-columns: repeat(1, 1fr); box-shadow: none; }
 }
 
 @media screen and (min-width: 576px) {
