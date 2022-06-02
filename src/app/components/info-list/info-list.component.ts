@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MainContentService } from '../../services/main-content.service';
 
 @Component({
   selector: 'app-info-list',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfoListComponent implements OnInit {
 
-  constructor() { }
+  songs = this.mainContentService.songs;
+
+  constructor(private mainContentService: MainContentService) { }
 
   ngOnInit(): void {
   }
