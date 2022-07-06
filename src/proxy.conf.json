@@ -1,0 +1,8 @@
+{
+  "*": {
+    "target": "https://api.deezer.com/",
+    "logLevel": "debug",
+    "secure": false,
+    "changeOrigin": true
+  }
+}
