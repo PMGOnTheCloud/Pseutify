@@ -1,11 +1,13 @@
 <div class="cardList">
-  <mat-card *ngFor="let song of songs" color="warn">
-    <mat-card-header>
-    </mat-card-header>
-    <img mat-card-image [src]="song.imageURL" [alt]="song.album">
-    <mat-card-content>
-      <mat-card-title>{{ song.name }}</mat-card-title>
-      <mat-card-subtitle>{{ song.artist }}</mat-card-subtitle>
-    </mat-card-content>
-  </mat-card>
+  <ng-container *ngIf="songs">
+    <mat-card *ngFor="let song of songs" color="warn">
+      <mat-card-header>
+      </mat-card-header>
+      <img mat-card-image [src]="song.album.cover_medium" [alt]="song.album.title">
+      <mat-card-content>
+        <mat-card-title>{{ song.title }}</mat-card-title>
+        <mat-card-subtitle>{{ song.artist.name }}</mat-card-subtitle>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
 </div>

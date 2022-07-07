@@ -8,11 +8,15 @@ import { MainContentService } from '../../services/main-content.service';
 })
 export class InfoListComponent implements OnInit {
 
-  songs = this.mainContentService.songs;
+  songs = null;
 
   constructor(private mainContentService: MainContentService) { }
 
   ngOnInit(): void {
+    this.mainContentService.retrievedSongs.subscribe({
+      error: () => { console.log("Data not finded") },
+      next: (data:any) => { this.songs = data; }
+    });
   }
 
 }

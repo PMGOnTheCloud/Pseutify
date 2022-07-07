@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Song } from '../interfaces/song';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,40 +10,18 @@ export class MainContentService {
 
   constructor(private http: HttpClient) { }
 
-  songs = [
-    {
-      name: 'Imagine',
-      artist: 'John Lenon',
-      album: 'Imagine',
-      imageURL: 'https://eltrasterodepalacio.files.wordpress.com/2011/10/imagine-john-lennon-02.jpg',
-    },
-    {
-      name: 'Don\'t look back in anger',
-      artist: 'Oasis',
-      album: '\(What\'s the Story\) Morning Glory?',
-      imageURL: 'https://m.media-amazon.com/images/I/71OvveowPdL._SX355_.jpg',
-    },
-    {
-      name: 'Tunak Tunak Tun',
-      artist: 'Daler Mehndi',
-      album: 'Tunak Tunak Tun',
-      imageURL: 'https://m.media-amazon.com/images/I/510bRRXU0LL.jpg',
-    },
-    {
-      name: 'Personality',
-      artist: 'Johnny Mercer',
-      album: '',
-      imageURL: 'https://images-na.ssl-images-amazon.com/images/I/516uzE3TdkL._SY445_SX342_QL70_ML2_.jpg',
-    },
-    {
-      name: 'Never gonna give you up',
-      artist: 'Rick Astley',
-      album: 'Whenever You Need Somebody',
-      imageURL: 'https://crazyminds.es/wp-content/uploads/Rick-Astley-Whenever-You-Need-Somebody.jpg',
-    },
-  ];
-
   getSongs() {
-    return this.songs;
+    return this.retrievedSongs;
   }
+
+  retrieveRemote(string: any = "Levitating") {
+    this.http.get(`/search/track/?q=${string}&index=0&limit=10&output=json`).subscribe({
+      error: () => { console.log("Data not finded") },
+      next: (data:any) => { console.log(string); this.retrievedSongs.next(data.data) }
+    });
+  }
+
+  retrievedSongs = new Subject<any>();
+
+
 }
