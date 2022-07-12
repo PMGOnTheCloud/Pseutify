@@ -10,14 +10,10 @@ export class MainContentService {
 
   constructor(private http: HttpClient) { }
 
-  getSongs() {
-    return this.retrievedSongs;
-  }
-
-  retrieveRemote(string: any = "Levitating") {
+  retrieveRemote(string: any) {
     this.http.get(`/search/track/?q=${string}&index=0&limit=10&output=json`).subscribe({
-      error: () => { console.log("Data not finded") },
-      next: (data:any) => { console.log(string); this.retrievedSongs.next(data.data) }
+      error: () => { this.retrievedSongs.next({ "error": "Cannot communicate with the API" }) },
+      next: (data:any) => { this.retrievedSongs.next(data.data) }
     });
   }
 

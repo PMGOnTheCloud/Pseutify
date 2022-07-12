@@ -15,7 +15,7 @@ export class TopbarComponent implements OnInit {
     const search = document.getElementById('input');
     const keyup = fromEvent(search, 'keyup');
     keyup.pipe(
-      debounceTime(1000),
+      debounceTime(500),
       map((e:any) => e.target.value),
       filter((data) => data != "")
     ).subscribe((data) => this.mainContentService.retrieveRemote(data));
